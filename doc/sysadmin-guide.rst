@@ -47,12 +47,10 @@ Some simple customizations for the CKAN site are available at ``http://<my-ckan-
 
 Here it's possible edit:
 
-  {
-    **Site title** - This title is used in the HTML <title> of pages served by CKAN (which may be displayed on your browser’s title bar).
-    **Style**
-    **Site tag line**
-    **Site tag logo** - a URL for the site logo, used at the head of every page of CKAN.
-    **About** - text that appears on the “about” page, ``http://<my-ckan-url>/about``. Can use **Markdown** here. If it is left empty, a standard text describing CKAN will appear.
-    **Intro text** - this text appears on the home page of your site.
-    **Custom CSS** - For simple style changes, can add CSS code here which will be added to the <head> of every page.
-  }
+* **Site title** - This title is used in the HTML <title> of pages served by CKAN (which may be displayed on your browser’s title bar).
+* **Style**
+* **Site tag line**
+* **Site tag logo** - a URL for the site logo, used at the head of every page of CKAN.
+* **About** - text that appears on the “about” page, ``http://<my-ckan-url>/about``. Can use **Markdown** here. If it is left empty, a standard text describing CKAN will appear.
+* **Intro text** - this text appears on the home page of your site.
+* **Custom CSS** - For simple style changes, can add CSS code here which will be added to the <head> of every page.
