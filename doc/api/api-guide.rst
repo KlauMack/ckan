@@ -102,4 +102,4 @@ API Examples
 --------------------- 
 Here's a list of most useful API request examples and their descriptions: `API examples <https://docs.ckan.org/en/2.11/api/index.html#api-examples>`_
 
-Python ode example can be found in the ``.../api/api-example-usage.py`` file.
+Python code example can be found in the ``.../api/api-example-usage.py`` file.
