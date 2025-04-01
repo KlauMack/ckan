@@ -60,7 +60,7 @@ Run the following command to build and start CKAN::
 
   docker compose up -d
 
-If development environemnt is needed, specify the ``docker-compose.dev.yml``. This setup is prefferd for testing, as there might be issues with access to the CKAN site through the back-end (correct NGINX setup is needed with verified SSL certifications):
+If development environemnt is needed, specify the ``docker-compose.dev.yml``. This setup is prefferd for testing, as there might be issues with access to the CKAN site through the back-end (correct NGINX setup is needed with verified SSL certifications)::
 
   docker compose -f .../paht/to/docker-compose.dev.yml up -d
 
