@@ -6,6 +6,5 @@ Documention is devided to into sections based on CKAN functionality:
 2. Maintainer
 3. API
 4. Extensions
-5. Themes
 
 More detailed documentation can be found here: https://app.readthedocs.org/projects/ckan/downloads/pdf/latest/.
