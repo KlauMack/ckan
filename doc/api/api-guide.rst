@@ -2,7 +2,9 @@
 API guide
 =========
 
-CKAN offers a flexible and robust APIs to interact with the CKAN site. 
+CKAN offers a flexible and robust APIs to interact with the CKAN site.\
+
+Official CKAN API `guide <https://docs.ckan.org/en/2.11/api/index.html>`_
 
 ---------------------
 Legacy APIs
