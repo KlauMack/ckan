@@ -3,9 +3,9 @@ This repository contains the documentaion for CKAN - a data management system (D
 
 ## Contents
 Documention is devided to into sections based on CKAN functionality:
-- [Sysadmin](doc/sysadmin-guide.rst)
-2. `Maintainer
-3. API
-4. Extensions
+1. [Sysadmin](doc/sysadmin-guide.rst)
+2. [Maintainer]/(doc/maintainer-guide.rst)
+3. [API](doc/api/api-guide.rst)
+4. [Extensions](doc/extensions.rst)
 
 More detailed documentation can be found here: https://app.readthedocs.org/projects/ckan/downloads/pdf/latest/.
