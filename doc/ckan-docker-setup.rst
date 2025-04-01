@@ -28,7 +28,7 @@ A ``Docker Engine`` and ``Docker Compose`` installation is needed. Simply, insta
 
 Install the engine and compose separately if Docker Desktop application is not available or not needed.
 
-Run ``docker version`` in the terminal of your machine to check if installation was successfull.
+Run ``docker version`` in the terminal of your machine to check if installation was successful.
 
 ---------------------
 Install (build and run) CKAN plus dependencies
@@ -78,7 +78,7 @@ Run this command to check if the containers are running (or check through the Do
 
   docker compose ps
 
-Successfull return::
+Successful return::
 
       NAME                       IMAGE                              COMMAND                  SERVICE      CREATED         STATUS                   PORTS
     ckan-docker-ckan-1         ckan-docker-ckan                   "/srv/app/start_ckan…"   ckan         4 minutes ago   Up 3 minutes (healthy)   5000/tcp
@@ -90,6 +90,6 @@ Successfull return::
 
 Access CKAN
 **********
-If setup was successfull, a CKAN site can be reached at ``http://localhost:8443`` (default port) or ``http://localhost:5000`` (development environment).
+If setup was successful, a CKAN site can be reached at ``http://localhost:8443`` (default port) or ``http://localhost:5000`` (development environment).
 
 The site is ready to be developed, tested and published either through the site's web interface or APIs.
