@@ -1,4 +1,4 @@
-# ckan-documentation
+# CKAN
 This repository contains the documentaion for CKAN - a data management system (DMS). 
 DMS is similair to content management systems like WordPress except used for data.
 
