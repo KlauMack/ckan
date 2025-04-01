@@ -26,6 +26,8 @@ Installing Docker Compose
 
 A ``Docker Engine`` and ``Docker Compose`` installation is needed. Simply, install `Docker Desktop <https://docs.docker.com/desktop/>`_ on the machine, as this will install both tools.
 
+Install the engine and compose separately if Docker Desktop application is not available or not needed.
+
 Run ``docker version`` in the terminal of your machine to check if installation was successfull.
 
 ---------------------
