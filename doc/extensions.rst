@@ -4,6 +4,8 @@ Extensions
 
 A CKAN extension is a Python package that modifies or extends CKAN. Each extension contains one or more plugins that must be added to your CKAN config file to activate the extension’s features.
 
+Official `extension documentation <https://docs.ckan.org/en/2.11/extensions/index.html>`_
+
 ---------------------
 Creating a new extension
 ---------------------
