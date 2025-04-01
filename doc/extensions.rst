@@ -135,3 +135,15 @@ Best practice to use exception handling in cases where a function could fail, li
     except toolkit.ObjectNotFound:
       # The curators group doesn't exist.
       return {'success': False, 'msg': "The curators groups doesn't exist, so only sysadmins are authorized to create groups."}
+
+Troubleshooting:
+*****
+**PluginNotFoundException**
+
+* Check the extension name in the CKAN confi file - should match the extension name in the ``plugin.ini`` file.
+• Check that ``python setup.py develop`` is run in the extension’s directory, with the CKAN virtual environment activated. The command needs to be run after every extension creation.
+
+**ImportError**
+
+* Check the path to the plugin class in the ``setup.py`` file.
+
