@@ -9,7 +9,7 @@ Official CKAN API `guide <https://docs.ckan.org/en/2.11/api/index.html>`_
 ---------------------
 Legacy APIs
 ---------------------
-CKAN still has a few `legacy APIs <https://docs.ckan.org/en/2.11/api/legacy-api.html>`_ for backwards-compatibility, but support for new CKAN features will not be added to these APIs. These endpoints are not supported andwill be removed in the future.
+CKAN still has a few `legacy APIs <https://docs.ckan.org/en/2.11/api/legacy-api.html>`_ for backwards-compatibility, but support for new CKAN features will not be added to these APIs. These endpoints are not supported and will be removed in the future.
 
 ---------------------
 Making an API request
