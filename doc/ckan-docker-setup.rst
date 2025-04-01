@@ -56,9 +56,13 @@ Start CKAN Using Docker Compose
 **********
 Run the following command to build and start CKAN::
 
-  docker-compose up -d
+  docker compose up -d
 
-* ``up``: This tells Docker Compose to start and run the containers defined in ``docker-compose.yml`` (a develoment image ``docker-compose.dev.yml`` could be used here instead if needed, in this case add ``-f`` flag as well and path to the dev file).
+If development environemnt is needed, specify the ``docker-compose.dev.yml``. This setup is prefferd for testing, as there might be issues with access to the CKAN site through the back-end (correct NGINX setup is needed with verified SSL certifications):
+
+  docker compose -f .../paht/to/docker-compose.dev.yml up -d
+
+* ``up``: This tells Docker Compose to start and run the containers defined in ``docker-compose.yml`.
 * ``-d`` (detached mode): Runs the containers in the background, so they continue running even after you close the terminal.
 
 This will start:
@@ -84,6 +88,6 @@ Successfull return::
 
 Access CKAN
 **********
-If setup was successfull, a CKAN site can be reached at ``http://localhost:8443`` (default port).
+If setup was successfull, a CKAN site can be reached at ``http://localhost:8443`` (default port) or ``http://localhost:5000`` (development environment).
 
 The site is ready to be developed, tested and published either through the site's web interface or APIs.
