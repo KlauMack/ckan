@@ -4,7 +4,7 @@ Docker Compise CKAN Setup
 
 For development setup or if a different OS is being used for maintaining CKAN site, a Docker Compose setup works great. In this section a brief setup instrunctions will be described.
 
-For a more detailed setup go here: `ckan-docker <https://github.com/ckan/ckan-docker>`_
+For a more detailed explanation go here: `ckan-docker <https://github.com/ckan/ckan-docker>`_
 
 ---------------------
 Overview
