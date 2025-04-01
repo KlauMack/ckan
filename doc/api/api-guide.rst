@@ -26,7 +26,7 @@ There are a few ways to call the APIs:
 
     response = urllib.request.urlopen('http://demo.ckan.org/api/3/action/group_list', data_string)
 
-#.Using Puython's Requests module (preffered)::
+#. Using Puython's Requests module (preffered)::
 
     response = requests.post('http://demo.ckan.org/api/3/action/group_list', json=dataset_dict)
 
