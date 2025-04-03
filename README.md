@@ -15,7 +15,7 @@ CKAN primarly stores data in relational databases (most commonly used is Postgre
 
 ### 1. Metadata Storage in Databases
 
-CKAN stores metadata related to datasets, users, organizations, recources, etc. as tables in relational database. Each of these tables has relationship between them, like ``resource`` table being related to ``package`` table (representing datasets).
+CKAN stores metadata related to datasets, users, organizations, recources, etc. as tables in relational database. Each of these tables has relationship between them, like ``resource`` table being related to ``package`` table (representing datasets) by foreign key (``package_id``).
 
 ![resource-package-relation](https://github.com/user-attachments/assets/141b8b48-5714-439c-bfb0-7d559335b485)
 
@@ -44,7 +44,7 @@ Solr is built on top of Apache Lucene, a full-text search library. Solr's indexi
 
 ## Logic
 
-## Actions
+### 1. Actions
 
 In CKAN, actions are the core operations or tasks that can be performed through its API and user interface. They correspond to the various operations related to datasets, groups, organizations, users, and other entities managed within the CKAN system. An action request is validated, executes and a response in returned everytime it is called.
 
@@ -55,5 +55,49 @@ Every CKAN's plugin is called through the CKAN's Action API endpoint ``.../api/3
 3. Apply Tags (``tag_create`` and ``tag_show``)
 4. Allow Access (``user_role_create``)
 
+### 2. Authorization
 
+CKAN uses a **role-based access control** model, where users are assigned roles within organizations or datasets, and these roles determine what actions they can perform.
+
+CKAN primarly uses **Flask-Auth**, **Flask-Login**, and **Pylons** (older CKAN version) authorization mechanisms for authentication and authorization.
+
+**Flask-Login** - a Flask extension used in CKAN to manage user sessions and authorization within CKAN's web interface. This extensions itself does not handle permissions beyond ``logged in or not``, and account registration and recovery.
+
+It can also integrate with third-party authentication providers through plugins. For enterprise deployments, CKAN supports LDAP, SAML2, OAuth2, and OpenID Connect through plugins. These allow log in using corporate credentials instead of CKAN's internal user database:
+
+* ``ckanext-ldap``: allows authentication via LDAP (e.g., Active Directory).
+* ``ckanext-saml2``: integrates CKAN with SAML2-based identity providers (e.g., Okta, Azure AD).
+* ``ckanext-oauth2``: supports OAuth2 authentication (Google, GitHub, etc.).
+* ``ckanext-oidc``: supports OpenID Connect for authentication.
+
+In addition to Flask-Login, CKAN has its own **IAuthFunctions** interface that controls who can perform specific actions. With this it's possible to override CKAN's default permission rules:
+
+```python
+import ckan.plugins as p
+import ckan.plugins.toolkit as tk
+
+class CustomAuthPlugin(p.SingletonPlugin):
+    # Tell CKAN that this plugin implements IAuthFunctions
+    p.implements(p.IAuthFunctions)
+
+    # Define custom authorization functions
+    def get_auth_functions(self):
+        return {
+            'package_create': custom_package_create
+        }
+```
+
+When using CKAN's API, authentication is done through API tokens (API keys are **not** recommended).
+
+## API
+
+CKAN utilizes RESTful API that allows interaction with CKAN programmatically. Usually CKAN's API will consists of three parts:
+
+* Action API – The main API for managing datasets, users, and organizations.
+* Datastore API (plugin) – Used for querying structured data in CKAN's Datastore.
+* Search API (plugin) – Used for searching datasets, organizations, and resources.
+
+Additional CKAN's API explanation and examples: [api-guide]()
+
+  
 
