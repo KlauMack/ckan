@@ -44,11 +44,13 @@ CKAN integrates with a search engine (usually Solr) to expand its search capabil
 
 Solr is built on top of Apache Lucene, a full-text search library. Solr's indexing makes searches much faster by converting raw data into a format optimized for quick searching. With Solr's multithreading, batch processing capabilities the dataset searches become faster.
 
+![ckan-solr-flow](https://github.com/user-attachments/assets/f0ef99d0-cde5-43db-8c59-3c466412e5e6)
+
 ## Logic
 
 ### 1. Actions
 
-In CKAN, actions are the core operations or tasks that can be performed through its API and user interface. They correspond to the various operations related to datasets, groups, organizations, users, and other entities managed within the CKAN system. An action request is validated, executes and a response in returned everytime it is called.
+In CKAN, actions are the core operations or tasks that can be performed through its API and user interface. They correspond to the various operations related to datasets, groups, organizations, users, and other entities managed within the CKAN system. An action request is validated, executed and a response is returned everytime it is called.
 
 Every CKAN's plugin is called through the CKAN's Action API endpoint ``.../api/3/action/{action_name}``. Some actions examples using CKAN API:
 
@@ -57,11 +59,13 @@ Every CKAN's plugin is called through the CKAN's Action API endpoint ``.../api/3
 3. Apply Tags (``tag_create`` and ``tag_show``)
 4. Allow Access (``user_role_create``)
 
+CKAN's [API reference](https://docs.ckan.org/en/2.9/api/#action-api-reference)
+
 ### 2. Authorization
 
 CKAN uses a **role-based access control** model, where users are assigned roles within organizations or datasets, and these roles determine what actions they can perform.
 
-CKAN primarly uses **Flask-Auth**, **Flask-Login**, and **Pylons** (older CKAN version) authorization mechanisms for authentication and authorization.
+CKAN primarly uses **Flask-Auth**, **Flask-Login**, and **Pylons** (older CKAN version) authorization mechanisms for authentication or authorization.
 
 **Flask-Login** - a Flask extension used in CKAN to manage user sessions and authorization within CKAN's web interface. This extensions itself does not handle permissions beyond ``logged in or not``, and account registration and recovery.
 
@@ -103,15 +107,15 @@ Additional CKAN's API explanation and examples: [api-guide](https://github.com/K
 
 ## Views
 
-CKAN views are created form resources, that takes raw data (CSV or JSON) into charts, tables, maps, etc.
+CKAN views are created form resources, were raw data (CSV or JSON) is turned into charts, tables, maps, etc.
 
 Types of CKAN views:
-* Data Table: Displays tabular data from CSV/Excel.	Viewing structured data without downloading.
-* Graph (Chart): Generates bar, line, or pie charts from numeric data.	Visualizing trends in dataset values.
-* Map (GeoView): Displays geographic data from GeoJSON/KML.	Showing locations, boundaries, or geospatial data.
-* Image View: Displays image files (JPEG, PNG, GIF).	Viewing satellite images or scanned documents.
-* Text View: Renders plain text or JSON content.	Displaying logs, reports, or API responses.
-* PDF View: Shows PDF files directly in the browser.	Viewing research papers or government reports.
+* **Data Table**: Displays tabular data from CSV/Excel.	Viewing structured data without downloading.
+* **Graph** (Chart): Generates bar, line, or pie charts from numeric data.	Visualizing trends in dataset values.
+* **Map** (GeoView): Displays geographic data from GeoJSON/KML.	Showing locations, boundaries, or geospatial data.
+* **Image View**: Displays image files (JPEG, PNG, GIF).	Viewing satellite images or scanned documents.
+* **Text View**: Renders plain text or JSON content.	Displaying logs, reports, or API responses.
+* **PDF View**: Shows PDF files directly in the browser.	Viewing research papers or government reports.
 
 ### Viewability detection
 
@@ -125,11 +129,22 @@ CKAN determines whether a view is possible from a resource based on a combinatio
    * ``ckanext-d3charts`` → Enables graph views (charts).
   
 Available views based on file type:
-* CSV / Excel: Data Table
-* JSON / JSONL: Text View
-* GeoJSON / KML: Map View (if ``ckanext-geoview`` is enabled)
-* PNG / JPG / GIF: Image Viewer
-* PDF: PDF Viewer
+| File Type  | View |
+| ------------- | ------------- |
+| CSV / Excel | Data Table |
+| JSON / JSONL | Text View |
+| GeoJSON / KML | Map View |
+| PNG / JPG / GIF | Image Viewer |
+| PDF | PDF Viewer |
 
+## Plugins
 
+Alongside DataStore plugin, here are additional most commonly or natively used plugins:
+
+* ``ckanext-harvest``: Enables the harvesting of datasets from external sources. Allows access to data in other CKAN servers.
+* ``ckanext-spatial``: Adds support for spatial (geospatial) data and metadata standards. Enables CKAN to handle and serve geographic datasets (such as shapefiles, GeoJSON, KML, etc.).
+* ``ckanext-saml``: Integrates SAML-based Single Sign-On (SSO) - allows authentication with external credentials. 
+* ``ckanext-google-analytics``: Provides integration with Google Analytics for tracking usage statistics on the CKAN portal.
+* ``ckanext-validation``: Provides ability to validate tabular data and integrate validation reports to the CKAN interface.
+* ``ckanext-multilingual``: Allows CKAN to handle content in multiple languages by enabling translations of dataset metadata. Works together with Solr for searching as well.
 
