@@ -7,7 +7,7 @@ CKAN code architecture
 
 ![download](https://github.com/user-attachments/assets/d0629712-5279-4847-9e64-f720361000f1)
 
-CKAN's architecture is devided into components that interact with eachother with different technologies and protocols. Each component's functionality can be expanded with plugins without chagning the core CKAN.
+CKAN's architecture is devided into components that interact with eachother. Each component's functionality can be expanded with plugins without changing the core CKAN.
 
 ## Models
 
@@ -34,7 +34,9 @@ DataStore plugin is usually complimented by an additional **Datapusher** plugin.
 
 While it's still possible to use DataStore plugin without Datapusher, the data extraction would have to be manual with ``ckan datastore push`` command each time a file uploaded.
 
-INSERT DIAGRAM HERE
+Data flow with DataStore plugin
+
+![ckan-datastore-flow](https://github.com/user-attachments/assets/e79aa22c-6968-4e81-8eff-b20ffc540e4d)
 
 ### 4. Search Index (Solr)
 
@@ -97,7 +99,37 @@ CKAN utilizes RESTful API that allows interaction with CKAN programmatically. Us
 * Datastore API (plugin) – Used for querying structured data in CKAN's Datastore.
 * Search API (plugin) – Used for searching datasets, organizations, and resources.
 
-Additional CKAN's API explanation and examples: [api-guide]()
+Additional CKAN's API explanation and examples: [api-guide](https://github.com/KlauMack/ckan/blob/main/doc/api/api-guide.rst)
 
+## Views
+
+CKAN views are created form resources, that takes raw data (CSV or JSON) into charts, tables, maps, etc.
+
+Types of CKAN views:
+* Data Table: Displays tabular data from CSV/Excel.	Viewing structured data without downloading.
+* Graph (Chart): Generates bar, line, or pie charts from numeric data.	Visualizing trends in dataset values.
+* Map (GeoView): Displays geographic data from GeoJSON/KML.	Showing locations, boundaries, or geospatial data.
+* Image View: Displays image files (JPEG, PNG, GIF).	Viewing satellite images or scanned documents.
+* Text View: Renders plain text or JSON content.	Displaying logs, reports, or API responses.
+* PDF View: Shows PDF files directly in the browser.	Viewing research papers or government reports.
+
+### Viewability detection
+
+When a resource is uploaded, CKAN automatically detects if view is possible. In addition, a manual view creation is also possible through web interface.
+
+CKAN determines whether a view is possible from a resource based on a combination of file format detection, metadata, and available plugins:
+
+1. CKAN checks resource's file extension (``.csv``, ``.json``, ``.geojson``, ``.pdf``) and MIME type (``text/csv``, ``application/json``, ``image/png``) to create the view. For example, **data.csv** file with MIME type **text/csv** is recognized as a tabular dataset, so a Data Table view can be created.
+2. Additional plugins expand the view creation process:
+   * ``ckanext-geoview`` → Enables GeoJSON & KML views.
+   * ``ckanext-d3charts`` → Enables graph views (charts).
   
+Available views based on file type:
+* CSV / Excel: Data Table
+* JSON / JSONL: Text View
+* GeoJSON / KML: Map View (if ``ckanext-geoview`` is enabled)
+* PNG / JPG / GIF: Image Viewer
+* PDF: PDF Viewer
+
+
 
