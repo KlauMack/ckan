@@ -9,7 +9,7 @@ CKAN code architecture
 
 CKAN's architecture is devided into components that interact with eachother. Each component's functionality can be expanded with plugins without changing the core CKAN.
 
-CKAN itself is written in Pylons (Python web framework - now turned into Pyramid). It relies on ``PyUtilib Component Architecture`` to declare a series of interfaces and extension points that then are used by plug-ins to hook in. It also implements a series of `Jinja2` extension (notably ``CKAN_EXTENDS``) that allows easily template inheritance between CKAN and connected plug-ins.
+CKAN itself is written in Pylons (Python's web framework - now turned into Pyramid). It relies on ``PyUtilib Component Architecture`` to declare a series of interfaces and extension points that then are used by plug-ins to hook in. It also implements a series of `Jinja2` extension (notably ``CKAN_EXTENDS``) that allows easily template inheritance between CKAN and connected plug-ins.
 
 ## Models
 
