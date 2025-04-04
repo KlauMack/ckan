@@ -9,6 +9,8 @@ CKAN code architecture
 
 CKAN's architecture is devided into components that interact with eachother. Each component's functionality can be expanded with plugins without changing the core CKAN.
 
+CKAN itself is written in Pylons (Python web framework - now turned into Pyramid). It relies on ``PyUtilib Component Architecture`` to declare a series of interfaces and extension points that then are used by plug-ins to hook in. It also implements a series of `Jinja2` extension (notably ``CKAN_EXTENDS``) that allows easily template inheritance between CKAN and connected plug-ins.
+
 ## Models
 
 CKAN primarly stores data in relational databases (most commonly used is PostgreSQL) as CKAN focuses on structured, interrelated data management.
@@ -104,6 +106,26 @@ CKAN utilizes RESTful API that allows interaction with CKAN programmatically. Us
 * Search API (plugin) – Used for searching datasets, organizations, and resources.
 
 Additional CKAN's API explanation and examples: [api-guide](https://github.com/KlauMack/ckan/blob/main/doc/api/api-guide.rst)
+
+### Extensions
+
+CKAN extensions are used to extend or enhance CKAN's core functionality. They allow you to add new features or modify existing behavior without changing the core CKAN code.
+
+Custonm extensions are created by hooking into CKAN's Interface. CKAN provides several interfaces and hooks that allow developers to interact with its core functions:
+
+1. `IDatasetForm` - used to modify or extend the dataset form fields.
+2. `IDatasetView` - allows to customize the way datasets are viewed on the CKAN site.
+3. `IPlugin` - allows you to define your own CKAN plugin and hook into the system to add new features or extend existing ones.
+4. `IConfigurer` - allows updating CKAN's configurations.
+5. `IValidator` - used to modify default data validation.
+
+
+Structure of an Extension:
+
+* A Python package with custom logic.
+* Template files for changing the front-end.
+* Configuration to integrate the extension with CKAN.
+* Static files like CSS/JS for custom UI components.
 
 ## Views
 
