@@ -111,7 +111,7 @@ Additional CKAN's API explanation and examples: [api-guide](https://github.com/K
 
 CKAN extensions are used to extend or enhance CKAN's core functionality. They allow you to add new features or modify existing behavior without changing the core CKAN code.
 
-Custonm extensions are created by hooking into CKAN's Interface. CKAN provides several interfaces and hooks that allow developers to interact with its core functions:
+Custom extensions are created by hooking into CKAN's Interface. CKAN provides several interfaces and hooks that allow developers to interact with its core functions:
 
 1. `IDatasetForm` - used to modify or extend the dataset form fields.
 2. `IDatasetView` - allows to customize the way datasets are viewed on the CKAN site.
